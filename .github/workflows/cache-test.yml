@@ -15,12 +15,11 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            for await (const response of github.rest.actions.getActionsCacheList({
+            const response = await github.rest.actions.getActionsCacheList({
                 owner: context.repo.owner,
                 repo: context.repo.repo
-            })) {
-              console.log(response);
-            }
+            });
+            console.log(response);
 
   create-caches:
     runs-on: ubuntu-latest
