@@ -15,12 +15,10 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            for await (const response of github.paginate.iterator(
-              github.rest.actions.getActionsCacheList({
+            for await (const response of github.rest.actions.getActionsCacheList({
                 owner: context.repo.owner,
                 repo: context.repo.repo
-              })
-            )) {
+            })) {
               console.log(response);
             }
 
