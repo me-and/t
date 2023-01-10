@@ -22,6 +22,7 @@ jobs:
                 key: 'a-'
             });
             for (const cache in response.data.actions_caches) {
+              console.log(cache);
               const response = await github.rest.actions.deleteActionsCacheById({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
