@@ -21,7 +21,8 @@ jobs:
                 per_page: 100,
                 key: 'a-'
             });
-            for (const cache in response.data.actions_caches) {
+            console.log(response.data.actions_caches);
+            for (let cache in response.data.actions_caches) {
               console.log(cache);
               const response = await github.rest.actions.deleteActionsCacheById({
                 owner: context.repo.owner,
