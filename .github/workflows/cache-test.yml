@@ -17,9 +17,11 @@ jobs:
           script: |
             const response = await github.rest.actions.getActionsCacheList({
                 owner: context.repo.owner,
-                repo: context.repo.repo
+                repo: context.repo.repo,
+                per_page: 100,
+                key: 'a-'
             });
-            console.log(response);
+            console.log(response.data.actions_caches);
 
   create-caches:
     runs-on: ubuntu-latest
