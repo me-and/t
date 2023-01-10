@@ -21,7 +21,7 @@ jobs:
                 context.repo.repo
               })
             )) {
-              console.log(response)
+              console.log(response);
             }
 
 #  create-caches:
