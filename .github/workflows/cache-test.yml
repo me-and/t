@@ -24,35 +24,35 @@ jobs:
               console.log(response);
             }
 
-#  create-caches:
-#    runs-on: ubuntu-latest
-#    needs: clear-caches
-#    steps:
-#
-#      - name: Create a bunch of files to cache
-#        runs: |
-#          for f in a b c d; do
-#            head -c64 /dev/random >"$f" &
-#          done
-#          wait
-#
-#      - name: Create cache a
-#        uses: actions/cache/save@v3
-#        with:
-#          key: a-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.job }}-${{ github.action }}
-#          path: a
-#      - name: Create cache b
-#        uses: actions/cache/save@v3
-#        with:
-#          key: b-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.job }}-${{ github.action }}
-#          path: b
-#      - name: Create cache c
-#        uses: actions/cache/save@v3
-#        with:
-#          key: c-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.job }}-${{ github.action }}
-#          path: c
-#      - name: Create cache d
-#        uses: actions/cache/save@v3
-#        with:
-#          key: d-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.job }}-${{ github.action }}
-#          path: d
+  create-caches:
+    runs-on: ubuntu-latest
+    needs: clear-caches
+    steps:
+
+      - name: Create a bunch of files to cache
+        run: |
+          for f in a b c d; do
+            head -c64 /dev/random >"$f" &
+          done
+          wait
+
+      - name: Create cache a
+        uses: actions/cache/save@v3
+        with:
+          key: a-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.job }}-${{ github.action }}
+          path: a
+      - name: Create cache b
+        uses: actions/cache/save@v3
+        with:
+          key: b-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.job }}-${{ github.action }}
+          path: b
+      - name: Create cache c
+        uses: actions/cache/save@v3
+        with:
+          key: c-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.job }}-${{ github.action }}
+          path: c
+      - name: Create cache d
+        uses: actions/cache/save@v3
+        with:
+          key: d-${{ github.run_id }}-${{ github.run_attempt }}-${{ github.job }}-${{ github.action }}
+          path: d
