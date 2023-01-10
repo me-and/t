@@ -15,7 +15,14 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log(github.rest.actions.getActionsCacheList({owner: context.repo.owner, repo: context.repo.repo}));
+            for await (const response of github.paginate.iterator(
+              github.rest.actions.getActionsCacheUsage({
+                owner: context.repo.owner,
+                repo: context.repo.repo
+              })
+            )) {
+              console.log(response);
+            }
 
   create-caches:
     runs-on: ubuntu-latest
