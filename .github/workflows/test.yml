@@ -8,7 +8,7 @@ runs:
       - name: bash set
         shell: bash
         run: set
-      - name: pwsh Get-ChildItem Env:
+      - name: pwsh Get-ChildItem Env
         shell: pwsh
-        run: Get-ChildItem Env:
+        run: 'Get-ChildItem Env:'
 
