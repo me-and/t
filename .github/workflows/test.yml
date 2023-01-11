@@ -1,0 +1,14 @@
+runs:
+  get-output:
+    runs-on: windows-latest
+    steps:
+      - name: bash env
+        shell: bash
+        run: env
+      - name: bash set
+        shell: bash
+        run: set
+      - name: pwsh Get-ChildItem Env:
+        shell: pwsh
+        run: Get-ChildItem Env:
+
