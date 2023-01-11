@@ -1,3 +1,4 @@
+on: push
 runs:
   get-output:
     runs-on: windows-latest
