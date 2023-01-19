@@ -1,15 +1,15 @@
+# https://docs.github.com/en/enterprise-server@3.7/admin/github-actions/managing-access-to-actions-from-githubcom/setting-up-the-tool-cache-on-self-hosted-runners-without-internet-access
+name: Get cache
 on: push
 jobs:
-  get-output:
+  upload_tool_cache:
     runs-on: windows-latest
     steps:
-      - name: bash env
-        shell: bash
-        run: env
-      - name: bash set
-        shell: bash
-        run: set
-      - name: pwsh Get-ChildItem Env
-        shell: pwsh
-        run: 'Get-ChildItem Env:'
-
+      - name: Archive tool cache
+        run: |
+          cd "${{ runner.tool_cache }}"
+          tar -czf tool_cache.tar.gz *
+      - name: Upload tool cache artifact
+        uses: actions/upload-artifact@v3
+        with:
+          path: ${{runner.tool_cache}}/tool_cache.tar.gz
